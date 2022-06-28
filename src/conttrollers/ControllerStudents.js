@@ -1,4 +1,5 @@
-const students = require('../database/students');
+// const studentsBackup = require('../database/students');
+const students = {};
 
 const sequenceId = Object.values(students).length + 1;
 

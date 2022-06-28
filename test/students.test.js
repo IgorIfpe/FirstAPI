@@ -2,8 +2,8 @@ const supertest = require('supertest');
 
 const app = require('../src/app');
 
-test('Deve inserir um instrutor com sucesso', () => {
-  return supertest(app).post('/instructors')
+test('Deve inserir um estudante com sucesso', () => {
+  return supertest(app).post('/students')
     .send({
       registration: '1804315',
       name: 'Jobson Tenório do Nascimento',
@@ -18,8 +18,8 @@ test('Deve inserir um instrutor com sucesso', () => {
     });
 });
 
-test('Deve inserir outro instrutor com sucesso', () => {
-  return supertest(app).post('/instructors')
+test('Deve inserir outro estudantes com sucesso', () => {
+  return supertest(app).post('/students')
     .send({
       registration: '1643697',
       name: 'Jailson Tenório do Nascimento',
@@ -34,8 +34,8 @@ test('Deve inserir outro instrutor com sucesso', () => {
     });
 });
 
-test('Deve listar todos os instrutores', () => {
-  return supertest(app).get('/instructors').then((res) => {
+test('Deve listar todos os estudantes', () => {
+  return supertest(app).get('/students').then((res) => {
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(2);
     expect(res.body[0]).toEqual({
@@ -55,8 +55,8 @@ test('Deve listar todos os instrutores', () => {
   });
 });
 
-test('Deve listar um instrutor', () => {
-  return supertest(app).get('/instructors/2').then((res) => {
+test('Deve listar um estudante', () => {
+  return supertest(app).get('/students/2').then((res) => {
     expect(res.status).toBe(200);
     expect(res.body.registration).toBe('1643697');
     expect(res.body.name).toBe('Jailson Tenório do Nascimento');
@@ -65,8 +65,8 @@ test('Deve listar um instrutor', () => {
   });
 });
 
-test('Deve apagar um instrutor', () => {
-  return supertest(app).delete('/instructors/1').then((res) => {
+test('Deve apagar um estudante', () => {
+  return supertest(app).delete('/students/1').then((res) => {
     expect(res.status).toBe(200);
     expect(res.body.registration).toBe('1804315');
     expect(res.body.name).toBe('Jobson Tenório do Nascimento');
@@ -75,8 +75,8 @@ test('Deve apagar um instrutor', () => {
   });
 });
 
-test('Deve alterar um instrutor', () => {
-  return supertest(app).put('/instructors/2')
+test('Deve alterar um estudante', () => {
+  return supertest(app).put('/students/2')
     .send({
       registration: '1643697',
       name: 'Jailson Tenório do Nascimento',
@@ -94,8 +94,8 @@ test('Deve alterar um instrutor', () => {
     });
 });
 
-test('Deve listar o instrutor com os dados alterados', () => {
-  return supertest(app).get('/instructors/2').then((res) => {
+test('Deve listar o estudante com os dados alterados', () => {
+  return supertest(app).get('/students/2').then((res) => {
     expect(res.status).toBe(200);
     expect(res.body.registration).toBe('1643697');
     expect(res.body.name).toBe('Jailson Tenório do Nascimento');
@@ -104,8 +104,8 @@ test('Deve listar o instrutor com os dados alterados', () => {
   });
 });
 
-test('Deve apagar outro instrutor', () => {
-  return supertest(app).delete('/instructors/2').then((res) => {
+test('Deve apagar outro estudante', () => {
+  return supertest(app).delete('/students/2').then((res) => {
     expect(res.status).toBe(200);
     expect(res.body.registration).toBe('1643697');
     expect(res.body.name).toBe('Jailson Tenório do Nascimento');
